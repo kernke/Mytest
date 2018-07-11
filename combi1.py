@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 #import scipy as sc
-import math
+#import math
 import numpy as np
 import matplotlib.pyplot as plt
 
 #import matplotlib.cm as cm
-
+#dsf
 #sin(omega*x) unabhaengig von x
 #omega 2*np.pi*frequenzpeak /schrittweiteVonX
 #lambda in datenpunkten 1/frequenzpeak
@@ -78,7 +78,7 @@ def cumfibi(n):
     return out
 
 
-print fibi(5)
+#print fibi(5)
 
 def chaosgamen(r,n,L):
     a=2*np.pi/(n*1.)
@@ -160,13 +160,14 @@ def subdatachaosgamen(r,n,sub,path):
     x1.append(0)
     for i in range(len(path)):
         if i%sub==0:
-            x1.append(0+r*(x[int(path[i])]-0))
-            y1.append(0+r*(y[int(path[i])]-0))
-        x1.append(x1[i-1]+r*(x[int(path[i])]-x1[i-1]))
-        y1.append(y1[i-1]+r*(y[int(path[i])]-y1[i-1]))
+            x1.append(np.sin(i*0.1)+r*(x[int(path[i])]-0))
+            y1.append(np.cos(i*0.1)+r*(y[int(path[i])]-0))
+        else:
+            x1.append(x1[i-1]+r*(x[int(path[i])]-x1[i-1]))
+            y1.append(y1[i-1]+r*(y[int(path[i])]-y1[i-1]))
     #plt.scatter(x,y,c='r')
-    plt.scatter(x1[:],y1[:],s=1)
-
+    #plt.scatter(x1[:],y1[:],s=1)
+    plt.plot(x1[:],y1[:])
 
 def datachaosgamen(r,n,path):
     a=2*np.pi/(n*1.)
@@ -310,7 +311,8 @@ def conpdatachaosgamen(r,path):
         y1.append(y1[i-1]+r*(y[i]-y1[i-1]))
     plt.plot(x1[:],y1[:],'bx-')
     return x1,y1 
-
+#dfdf
+#dsf
 def bconpdatachaosgamen(r,path):
     adder=np.diff(np.sort(np.unique(path))).min()
     a=2*np.pi/(1*(np.max(path)*1.-np.min(path)*1.+adder))
